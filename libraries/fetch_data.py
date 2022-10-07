@@ -19,7 +19,7 @@ class FetchData:
         with open(f'tmp/{self.file_name}.html', 'wb') as file:
             file.write(data)
             file.close()
-        
+
 
 if __name__=="__main__":
-    FetchData('https://sports.ndtv.com/english-premier-league/news', 'ndtv').run()
+    FetchData('https://www.globalpetrolprices.com/Kenya/gasoline_prices/', 'test fuel prices kenya').run()
