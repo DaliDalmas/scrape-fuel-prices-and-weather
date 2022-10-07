@@ -7,3 +7,4 @@ source venv/bin/activate
 # pip install pandas jupyterlab beautifulsoup4 psycopg2-binary seaborn plotly "apache-airflow[s3]"
 # pip freeze > requirements.txt
 pip install -r requirements.txt
+mkdir tmp
