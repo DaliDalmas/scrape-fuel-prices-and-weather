@@ -1,5 +1,7 @@
 import pandas as pd
 from bs4 import BeautifulSoup
+
+from libraries.api_libs import PostToAPI
 class ScrapeWeather:
     def __init__(self, file_path: str):
         self.file_path = file_path
@@ -12,9 +14,27 @@ class ScrapeWeather:
     def scrape(self):
         file = self._read_file()
         soup = BeautifulSoup(file, features="lxml")
-        present_temp_value_div = soup.find_all('div', {"class": "present_temp_value"})
-        present_rh_value_div = soup.find_all('div', {"class": "present_rh_value"})
-        print(present_temp_value_div, present_rh_value_div)
+
+        elements = []
+        temperature = soup.find('td', {"class": "temperature"}).text
+        elements.append('temperature')
+        elements.append(str(temperature).strip())
+        wind = soup.find('b', {"class": "wind_ico"}).text
+        elements.append('wind')
+        elements.append(str(wind).strip())
+
+        table_cell_elements = soup.find_all('div', {"class": "info_table"})[2].find_all('td')
+        for cell_element in table_cell_elements:
+            elements.append(str(cell_element.text).strip())
+
+        data_dict = {}
+        for index in range(len(elements)):
+            if index%2!=0:
+                key = str(elements[index-1].lower()).replace(" ", "_")
+                data_dict[key] = float(elements[index].split(' ')[0])
+                data_dict[f'{key}_unit'] = str(elements[index].split(' ')[1])
+
+        PostToAPI('/weather', data_dict).api_post()
 
 if __name__=='__main__':
     ScrapeWeather('tmp/kampala_weather.html').scrape()

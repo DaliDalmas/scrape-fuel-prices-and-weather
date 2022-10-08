@@ -6,7 +6,8 @@ class Weather:
         self.city = city
 
     def fetch_weather(self):
-        url = f'https://worldweather.wmo.int/en/city.html?cityId={str(self.city_id)}'
+        # url = f'https://worldweather.wmo.int/en/city.html?cityId={str(self.city_id)}'
+        url = f'https://www.ventusky.com/{self.city.lower()}'
         print(url)
         FetchData(url=url, file_name=f'{self.city}_weather').run()
 
