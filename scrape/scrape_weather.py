@@ -11,9 +11,11 @@ class ScrapeWeather:
 
     def scrape(self):
         file = self._read_file()
-        soup = BeautifulSoup(file, 'html')
-        print(soup)
+        soup = BeautifulSoup(file, features="lxml")
+        present_temp_value_div = soup.find_all('div', {"class": "present_temp_value"})
+        present_rh_value_div = soup.find_all('div', {"class": "present_rh_value"})
+        print(present_temp_value_div, present_rh_value_div)
 
 if __name__=='__main__':
-    sobj = ScrapeWeather('tmp/kampala_weather.html')
-    sobj.scrape()
+    ScrapeWeather('tmp/kampala_weather.html').scrape()
+    ScrapeWeather('tmp/nairobi_weather.html').scrape()

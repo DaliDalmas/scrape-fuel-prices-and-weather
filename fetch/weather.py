@@ -7,6 +7,7 @@ class Weather:
 
     def fetch_weather(self):
         url = f'https://worldweather.wmo.int/en/city.html?cityId={str(self.city_id)}'
+        print(url)
         FetchData(url=url, file_name=f'{self.city}_weather').run()
 
 if __name__=='__main__':
