@@ -1,20 +1,9 @@
-import pandas as pd
-from bs4 import BeautifulSoup
-
+from libraries.base_scrape import BaseScrape
 from libraries.api_libs import PostToAPI
-class ScrapeWeather:
-    def __init__(self, file_path: str):
-        self.file_path = file_path
-
-    def _read_file(self):
-        with open(self.file_path, 'r') as f:
-            file = f.read()
-        return file
+class ScrapeWeather(BaseScrape):
 
     def scrape(self):
-        file = self._read_file()
-        soup = BeautifulSoup(file, features="lxml")
-
+        soup = self._read_file()
         elements = []
         temperature = soup.find('td', {"class": "temperature"}).text
         elements.append('temperature')

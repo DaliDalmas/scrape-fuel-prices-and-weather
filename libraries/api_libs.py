@@ -6,6 +6,7 @@ class PostToAPI:
         self.data = data
 
     def api_post(self):
-        results = requests.post(self.url, self.data)
-        print(results.status_code)
+        #results = requests.post(self.url, self.data)
+        #print(results.status_code)
+        print('posted', self.data)
         
