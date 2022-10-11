@@ -4,7 +4,25 @@ from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import sessionLocal1, engine
 
-app = FastAPI()
+description = """
+Fuel Weather api helps you to collect and share data
+about weather and fuel prices of a country
+"""
+
+app = FastAPI(
+    title="Fuel Weather API",
+    description=description,
+    version="0.0.1",
+    contact={
+        "name": "Dalmas Otieno",
+        "url": "https://github.com/DaliDalmas"
+    },
+    license_info={
+        "name": "MIT License",
+        "url": "https://github.com/DaliDalmas/scrape-fuel-prices-and-weather/blob/main/LICENSE",
+    },
+)
+
 models.Base.metadata.create_all(bind=engine)
 
 
@@ -18,22 +36,53 @@ async def get_db():
     finally:
         db.close()
 
-@app.get("/fuels/", response_model=list[schemas.Fuel])
+@app.get("/fuels/", response_model=list[schemas.Fuel], tags=["fuel"])
 def read_fuels(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     fuels = crud.get_fuels(db, skip=skip, limit=limit)
     return fuels
 
-@app.post("/add_fuel/", response_model=schemas.Fuel)
+@app.get("/fuel/{fuel_id}", response_model=schemas.Fuel, tags=["fuel"])
+def read_fuel(fuel_id: str, db: Session = Depends(get_db)):
+    db_fuel = crud.get_fuel(db=db, fuel_id=fuel_id)
+    if db_fuel is None:
+        raise HTTPException(status_code=404, detail="Fuel values not found")
+    return db_fuel
+
+@app.post("/add_fuel/", response_model=schemas.Fuel, tags=["fuel"])
 def add_fuel(fuel: schemas.FuelCreate, db: Session = Depends(get_db)):
     return crud.create_fuel(db=db, fuel=fuel)
 
 
-@app.get("/weathers/", response_model=list[schemas.Weather])
+
+@app.get("/weathers/", response_model=list[schemas.Weather], tags=["weather"])
 def read_weathers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     weathers = crud.get_weathers(db, skip=skip, limit=limit)
     return weathers
 
-@app.get("/exchange_rates/", response_model=list[schemas.ExchangeRate])
+@app.get("/weather/{weather_id}", response_model=schemas.Weather, tags=["weather"])
+def read_weather(weather_id: str, db: Session = Depends(get_db)):
+    db_weather = crud.get_weather(db=db, weather_id=weather_id)
+    if db_weather is None:
+        raise HTTPException(status_code=404, detail="Weather values not found")
+    return db_weather
+
+@app.post("/add_weather/", response_model=schemas.Weather, tags=["weather"])
+def add_weather(weather: schemas.WeatherCreate, db: Session = Depends(get_db)):
+    return crud.create_weather(db=db, weather=weather)
+
+
+@app.get("/exchange_rates/", response_model=list[schemas.ExchangeRate], tags=["exchange rate"])
 def read_exchange_rates(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     exchanges = crud.get_exchange_rates(db, skip=skip, limit=limit)
     return exchanges
+
+@app.get("/exchange_rate/{exchange_rate_id}", response_model=schemas.ExchangeRate, tags=["exchange rate"])
+def read_exchange_rate(exchange_rate_id: str, db: Session = Depends(get_db)):
+    db_exchange_rate = crud.get_exchange_rate(db=db, exchange_rate_id=exchange_rate_id)
+    if db_exchange_rate is None:
+        raise HTTPException(status_code=404, detail="Exchange rate values not found")
+    return db_exchange_rate
+
+@app.post("/add_exchange_rates/", response_model=schemas.ExchangeRate, tags=["exchange rate"])
+def add_exchange_rates(exchanges: schemas.ExchangeRateCreate, db: Session = Depends(get_db)):
+    return crud.create_weather(db=db, exchange=exchanges)
