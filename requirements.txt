@@ -50,6 +50,7 @@ email-validator==1.3.0
 entrypoints==0.4
 exceptiongroup==1.0.0rc9
 executing==1.0.0
+fastapi==0.85.0
 fastjsonschema==2.16.2
 Flask==2.2.2
 Flask-AppBuilder==4.1.3
@@ -135,6 +136,7 @@ psycopg2-binary==2.9.3
 ptyprocess==0.7.0
 pure-eval==0.2.2
 pycparser==2.21
+pydantic==1.10.2
 Pygments==2.13.0
 PyJWT==2.5.0
 pyparsing==3.0.9
@@ -166,6 +168,7 @@ sqlalchemy-redshift==0.8.11
 SQLAlchemy-Utils==0.38.3
 sqlparse==0.4.2
 stack-data==0.5.0
+starlette==0.20.4
 swagger-ui-bundle==0.0.9
 tabulate==0.8.10
 tenacity==8.1.0

@@ -130,3 +130,4 @@ dmypy.json
 *.html
 *logs*
 *db*
+*connection_parameters*
