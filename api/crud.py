@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from . import models, schemas
+import datetime
 
 
 def get_fuel(db: Session, fuel_id: str):
@@ -31,6 +32,7 @@ def update_fuel(fuel_id: str, db: Session, updated_fuel: schemas.FuelCreate):
     fuel_to_update.eur_price_per_litre = updated_fuel.eur_price_per_litre
     fuel_to_update.eur_price_per_gallon = updated_fuel.eur_price_per_gallon
     fuel_to_update.country = updated_fuel.country
+    fuel_to_update.updated_at = datetime.datetime.utcnow()
     db.commit()
 
     return fuel_to_update
@@ -73,6 +75,7 @@ def update_weather(weather_id: str, db: Session, updated_weather: schemas.Weathe
     weather_to_update.cloud_base = updated_weather.cloud_base
     weather_to_update.cloud_base_unit = updated_weather.cloud_base_unit
     weather_to_update.country = updated_weather.country
+    weather_to_update.updated_at = datetime.datetime.utcnow()
     db.commit()
 
     return weather_to_update
@@ -106,6 +109,7 @@ def update_exchange_rate(exchange_rate_id: str, db: Session, updated_exchange_ra
     exchange_rate_to_update.usd_rate = updated_exchange_rate.usd_rate
     exchange_rate_to_update.euro_rate = updated_exchange_rate.euro_rate
     exchange_rate_to_update.country = updated_exchange_rate.country
+    exchange_rate_to_update.updated_at = datetime.datetime.utcnow()
     db.commit()
 
     return exchange_rate_to_update

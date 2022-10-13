@@ -12,7 +12,8 @@ class FuelCreate(FuelBase):
 class Fuel(FuelBase):
     id: int
     country: str
-    datetime: datetime
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         orm_mode = True
@@ -36,7 +37,8 @@ class WeatherCreate(WeatherBase):
 class Weather(WeatherBase):
     id: int
     country: str
-    datetime: datetime
+    created_at: datetime
+    updated_at: datetime
     class Config:
         orm_mode = True
 
@@ -49,6 +51,7 @@ class ExchangeRateCreate(ExchangeRateBase):
 class ExchangeRate(ExchangeRateBase):
     id: int
     country: str
-    datetime: datetime
+    created_at: datetime
+    updated_at: datetime
     class Config:
         orm_mode = True

@@ -12,8 +12,9 @@ class Fuel(Base):
     usd_price_per_gallon = Column(Float)
     eur_price_per_litre = Column(Float)
     eur_price_per_gallon = Column(Float)
-    country = Column(String)
-    datetime = Column(DateTime, default=datetime.datetime.utcnow)
+    country = Column(String(2))
+    created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
     __table_args__ = {'schema': 'scraped_data'}
 
@@ -33,8 +34,9 @@ class Weather(Base):
     clouds_unit = Column(String)
     cloud_base = Column(Float)
     cloud_base_unit = Column(String)
-    country = Column(Float)
-    datetime = Column(DateTime, default=datetime.datetime.utcnow)
+    country = Column(String(2))
+    created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
     __table_args__ = {'schema': 'scraped_data'}
 
@@ -42,9 +44,10 @@ class ExchangeRate(Base):
     __tablename__ = "exchange_rate"
 
     id = Column(INTEGER, primary_key=True)
-    country = Column(String)
+    country = Column(String(2))
     usd_rate = Column(Float)
     euro_rate = Column(Float)
-    datetime = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
     __table_args__ = {'schema': 'scraped_data'}
