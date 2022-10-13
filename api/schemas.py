@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
 
 
 class FuelBase(BaseModel):
@@ -24,10 +25,10 @@ class WeatherBase(BaseModel):
     temperature_unit: str
     wind: float
     wind_unit: str
-    visibility: float
-    visibility_unit: str
-    humidity: float
-    humidity_unit: str
+    visibility: Optional[float]
+    visibility_unit: Optional[str]
+    humidity: Optional[float]
+    humidity_unit: Optional[str]
     clouds: float
     clouds_unit: str
     cloud_base: float
