@@ -79,6 +79,7 @@ def delete_weather(weather_id: str, db: Session = Depends(get_db)):
     return crud.delete_weather(weather_id=weather_id, db=db)
 
 
+
 @app.get("/exchange_rates/", response_model=list[schemas.ExchangeRate], tags=["exchange rate"])
 def read_exchange_rates(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     exchanges = crud.get_exchange_rates(db, skip=skip, limit=limit)
@@ -95,6 +96,6 @@ def read_exchange_rate(exchange_rate_id: str, db: Session = Depends(get_db)):
 def add_exchange_rates(exchanges: schemas.ExchangeRateCreate, db: Session = Depends(get_db)):
     return crud.create_weather(db=db, exchange=exchanges)
 
-@app.delete("/delete_exchange_rate/{exchange_rate_id}", tags=["exchange_rate"])
+@app.delete("/delete_exchange_rate/{exchange_rate_id}", tags=["exchange rate"])
 def delete_exchange_rate(exchange_rate_id: str, db: Session = Depends(get_db)):
     return crud.delete_exchange_rate(exchange_rate_id=exchange_rate_id, db=db)
