@@ -1,5 +1,5 @@
 from enum import auto
-from sqlalchemy import Column, String, Float, DateTime
+from sqlalchemy import INTEGER, Column, String, Float, DateTime
 import datetime
 
 from .database import Base
@@ -7,7 +7,7 @@ from .database import Base
 class Fuel(Base):
     __tablename__ = "fuel"
 
-    id = Column(String, primary_key=True, index=True)
+    id = Column(INTEGER, primary_key=True)
     usd_price_per_litre = Column(Float)
     usd_price_per_gallon = Column(Float)
     eur_price_per_litre = Column(Float)
@@ -20,7 +20,7 @@ class Fuel(Base):
 class Weather(Base):
     __tablename__ = "weather"
 
-    id = Column(String, primary_key=True, index=True)
+    id = Column(INTEGER, primary_key=True)
     temperature = Column(Float)
     temperature_unit = Column(String)
     wind = Column(Float)
@@ -41,7 +41,7 @@ class Weather(Base):
 class ExchangeRate(Base):
     __tablename__ = "exchange_rate"
 
-    id = Column(String, primary_key=True, index=True)
+    id = Column(INTEGER, primary_key=True)
     country = Column(String)
     usd_rate = Column(Float)
     euro_rate = Column(Float)

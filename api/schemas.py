@@ -10,9 +10,12 @@ class FuelBase(BaseModel):
 class FuelCreate(FuelBase):
     country: str 
 class Fuel(FuelBase):
-    id: str
+    id: int
     country: str
     datetime: datetime
+
+    class Config:
+        orm_mode = True
 
 
 class WeatherBase(BaseModel):
@@ -31,9 +34,11 @@ class WeatherBase(BaseModel):
 class WeatherCreate(WeatherBase):
     country: str 
 class Weather(WeatherBase):
-    id: str
+    id: int
     country: str
     datetime: datetime
+    class Config:
+        orm_mode = True
 
 
 class ExchangeRateBase(BaseModel):
@@ -42,6 +47,8 @@ class ExchangeRateBase(BaseModel):
 class ExchangeRateCreate(ExchangeRateBase):
     country: str 
 class ExchangeRate(ExchangeRateBase):
-    id: str
+    id: int
     country: str
     datetime: datetime
+    class Config:
+        orm_mode = True
