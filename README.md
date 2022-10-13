@@ -2,7 +2,7 @@
 In this project I used apache airflow to scrape website periodically. This is for the tutorials I do on youtube. You can checkout my channel [here](https://www.youtube.com/channel/UCzSlSeJ4XH4bWH79DKmIxjg). I do data science and data engineering videos for projects like these.
 ## Technologies used
 <img src="images/beautifulsoup.png" alt="Apache Airflow" width="200" height="100"/>&nbsp;&nbsp;<img src="images/AirflowLogo.png" alt="BeautifulSoup" width="200" height="100" />&nbsp;&nbsp;<img src="images/fastapi.png" alt="fast api" width="200" height="100" />&nbsp;&nbsp;<img src="images/postgresql.png" alt="postgresql" width="200"  height="100" />
-<img src="images/s3.png" alt="s3" width="200" height="100" />&nbsp;&nbsp;<img src="images/dash.png" alt="dash" width="200" height="100" />&nbsp;&nbsp;<img src="images/pytest.png" alt="pytest" width="200" height="100" />
+<img src="images/s3.png" alt="s3" width="200" height="100" />&nbsp;&nbsp;<img src="images/dash.png" alt="dash" width="200" height="100" />&nbsp;&nbsp;<img src="images/pytest.png" alt="pytest" width="200" height="100" />&nbsp;&nbsp;<img src="images/alchemy.jpeg" alt="sqlalchemy" width="200" height="100" />
 
 ## using the project
 You can follow these steps to setup and you can use [this video]() to help you understand what is going on.
