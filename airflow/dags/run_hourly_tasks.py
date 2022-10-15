@@ -10,56 +10,60 @@ from scrape.scrape_weather import ScrapeWeather
 
 dag = DAG(
     dag_id="run_hourly_tasks",
-    start_date=datetime(2016, 1, 1),
+    start_date=datetime(2022, 10, 15),
     schedule="@hourly"
     )
 
 run_fetch_kenyan_fuel = PythonOperator(
     dag=dag,
     task_id = 'run_fetch_kenyan_fuel',
-    python_callable=Fuel('Kenya').fetch_fuel()
+    python_callable=Fuel('Kenya').fetch_fuel
 )
 
 run_fetch_ugandan_fuel = PythonOperator(
     dag=dag,
     task_id = 'run_fetch_ugandan_fuel',
-    python_callable=Fuel('Uganda').fetch_fuel()
+    python_callable=Fuel('Uganda').fetch_fuel
 )
 
 run_fetch_kenyan_weather = PythonOperator(
     dag=dag,
     task_id = 'run_fetch_kenyan_weather',
-    python_callable=Weather(251, 'nairobi').fetch_weather()
+    python_callable=Weather(251, 'nairobi').fetch_weather
 )
 
 run_fetch_ugandan_weather = PythonOperator(
     dag=dag,
     task_id = 'run_fetch_ugandan_weather',
-    python_callable=Weather(1328, 'kampala').fetch_weather()
+    python_callable=Weather(1328, 'kampala').fetch_weather
 )
 
 run_scrape_kenyan_fuel = PythonOperator(
     dag=dag,
     task_id = 'run_scrape_kenyan_fuel',
-    python_callable=ScrapeFuel('tmp/kenya_fuel_price.html').scrape('KE')
+    python_callable=ScrapeFuel('tmp/kenya_fuel_price.html').scrape,
+    op_kwargs={'country': 'KE'},
 )
 
 run_scrape_ugandan_fuel = PythonOperator(
     dag=dag,
     task_id = 'run_scrape_ugandan_fuel',
-    python_callable=ScrapeFuel('tmp/uganda_fuel_price.html').scrape('UG')
+    python_callable=ScrapeFuel('tmp/uganda_fuel_price.html').scrape,
+    op_kwargs={'country': 'UG'},
 )
 
 run_scrape_kenyan_weather = PythonOperator(
     dag=dag,
     task_id = 'run_scrape_kenyan_weather',
-    python_callable=ScrapeWeather('tmp/kampala_weather.html').scrape('UG')
+    python_callable=ScrapeWeather('tmp/kampala_weather.html').scrape,
+    op_kwargs={'country': 'UG'},
 )
 
 run_scrape_ugandan_weather = PythonOperator(
     dag=dag,
     task_id = 'run_scrape_ugandan_weather',
-    python_callable=ScrapeWeather('tmp/nairobi_weather.html').scrape('KE')
+    python_callable=ScrapeWeather('tmp/nairobi_weather.html').scrape,
+    op_kwargs={'country': 'KE'},
 )
 
 def clean_up_files():
