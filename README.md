@@ -11,7 +11,7 @@ You can follow these steps to setup and you can use [this video]() to help you u
 ```
 cd scrape-epl-news
 ```
-3. Run `setup_steps` to install dependencies. Make sure you are using `pyenv` to manage your python versions and `python 3.9.9` is installed in the pyenv manager.
+3. Run `setup_steps` to install dependencies. Make sure you are using `pyenv` to manage your python versions and `python 3.10.0` is installed in the pyenv manager.
 ```
 bash scripts/setup_steps.sh
 ```
