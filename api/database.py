@@ -1,9 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import connection_parameters as cp
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{cp.user}:{cp.password}@localhost/scraped"
+SQLALCHEMY_DATABASE_URL = f"postgresql://fastapi_user:fastapi_user@localhost/scraped_data"
 # Create the SQLAlchemy engine
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
 

@@ -7,5 +7,5 @@ class BaseScrape:
     def _read_file(self):
         with open(self.file_path, 'r') as f:
             file = f.read()
-        soup = BeautifulSoup(file, features="lxml")
+        soup = BeautifulSoup(file)
         return soup

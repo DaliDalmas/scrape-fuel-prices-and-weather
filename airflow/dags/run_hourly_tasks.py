@@ -10,8 +10,8 @@ from scrape.scrape_weather import ScrapeWeather
 
 dag = DAG(
     dag_id="run_hourly_tasks",
-    start_date=datetime(2022, 10, 15),
-    schedule="@hourly"
+    start_date=datetime(2022, 10, 20),
+    schedule_interval="@hourly"
     )
 
 run_fetch_kenyan_fuel = PythonOperator(

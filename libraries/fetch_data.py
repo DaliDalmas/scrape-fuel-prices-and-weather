@@ -1,4 +1,6 @@
 import requests
+import os
+os.environ["no_proxy"]="*"
 class FetchData:
     def __init__(self, url: str, file_name):
         self.web_link = url

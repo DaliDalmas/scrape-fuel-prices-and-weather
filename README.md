@@ -15,3 +15,12 @@ cd scrape-epl-news
 ```
 bash scripts/setup_steps.sh
 ```
+
+## setting up airflow
+source venv activate
+export PYTHONPATH
+export AIRFLOW_HOME
+airflow version
+sql_alchemy_conn
+airflow db init
+airflow users create --username dalmas --firstname Dalmas --lastname Otieno --role Admin --email dalmas@dalicodes.com --password dalmaspassword

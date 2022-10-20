@@ -16,7 +16,7 @@ class Fuel(Base):
     created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
-    __table_args__ = {'schema': 'scraped_data'}
+    __table_args__ = {'schema': 'data'}
 
 class Weather(Base):
     __tablename__ = "weather"
@@ -38,7 +38,7 @@ class Weather(Base):
     created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
-    __table_args__ = {'schema': 'scraped_data'}
+    __table_args__ = {'schema': 'data'}
 
 class ExchangeRate(Base):
     __tablename__ = "exchange_rate"
@@ -50,4 +50,4 @@ class ExchangeRate(Base):
     created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)
 
-    __table_args__ = {'schema': 'scraped_data'}
+    __table_args__ = {'schema': 'data'}
