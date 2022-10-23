@@ -62,12 +62,46 @@ fast api is used to manage the database iteractions. If the api is down no data 
 ```
 source venv/bin/activate
 ```
-2. run the following command
+3. run the following command
 ```
 uvicorn api.main:app
 ```
+4. You can access the api documentation on `http://127.0.0.1:8000/docs`
+
 ## running airflow
+1. Open fresh terminal
+2. cd into the repo
+3. set the following environment variables as follows
+```
+export PYTHONPATH=`pwd`
+export AIRFLOW_HOME=`pwd`/airflow
+```
+4. activate the virtual environment
+```
+source venv/bin/activate
+```
+5. run airflow scheduler
+```
+airflow scheduler
+```
+6. Open another fresh terminal and follow steps `2` to `4`
+7. run airflow webserver
+```
+airflow webserver
+```
+8. you can access airflow ui on `http://0.0.0.0:8080/`
+
+Note: ensure both terminals remain open for airflow to continue working
 
 ## running dash 
-
-
+1. Open fresh terminal
+2. cd into the repo
+3. activate the virtual environment
+```
+source venv/bin/activate
+```
+4. run the following command to have dash running
+```
+python dash/app.py
+```
+5. you can access dash on `http://127.0.0.1:8050/`
