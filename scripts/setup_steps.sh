@@ -4,7 +4,6 @@ pyenv local 3.10.0
 pip install --upgrade pip
 python -m venv venv
 source venv/bin/activate
-# pip install pandas jupyterlab beautifulsoup4 psycopg2-binary seaborn plotly "apache-airflow[s3]" pydantic fastapi pytest dash
-# pip freeze > requirements.txt
+pip install --upgrade pip
 pip install -r requirements.txt
 mkdir tmp
