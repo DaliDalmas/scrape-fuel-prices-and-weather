@@ -26,3 +26,13 @@ def get_hourly_price_per_litre():
         order by 3;
         """
     return pd.read_sql(q, con=engine_create())
+
+def get_hourly_temperature():
+    q = """
+        select 
+            temperature,
+            created_at,
+            country
+        from data.weather;
+        """
+    return pd.read_sql(q, con=engine_create())

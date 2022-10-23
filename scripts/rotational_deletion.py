@@ -3,7 +3,7 @@ from os.path import isfile, join
 import pandas as pd
 import shutil
 
-def get_runs_to_delete(base_dir: str='./logs', max_runs: int=100)->list:
+def get_runs_to_delete(base_dir: str='./airflow/logs', max_runs: int=100)->list:
     runs_to_delete = []
     dags_logs_folders = [dag_log
                             for dag_log in listdir(base_dir)
@@ -37,11 +37,8 @@ def delete_directories(paths: list):
     for path in paths:
         shutil.rmtree(path)
 
-def move_directories_to_var_log(paths: list):
-    pass
-
 def run():
-    paths_to_runs = get_runs_to_delete(base_dir='./logs', max_runs=3)
+    paths_to_runs = get_runs_to_delete(base_dir='./airflow/logs', max_runs=3)
     delete_directories(paths=paths_to_runs)
 
 if __name__=="__main__":

@@ -14,3 +14,10 @@ def generate_hourly_price_per_litre_chart():
     fig = px.line(df, x='created_at', y="usd_price_per_litre", color='country', title="hourly fuel price per litre (usd)")
 
     return fig
+
+def generate_hourly_temperature_chart():
+
+    df = q.get_hourly_temperature()
+    fig = px.line(df, x='created_at', y="temperature", color='country', title="hourly temperature (deg cel)")
+
+    return fig

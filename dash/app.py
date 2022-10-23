@@ -21,6 +21,11 @@ app.layout = html.Div(children=[
     dcc.Graph(
         id='hourly_price-pre-litre',
         figure=charts.generate_hourly_price_per_litre_chart()
+    ),
+
+    dcc.Graph(
+        id='hourly-temp-litre',
+        figure=charts.generate_hourly_temperature_chart()
     )
 ])
 

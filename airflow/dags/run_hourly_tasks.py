@@ -6,6 +6,7 @@ from fetch.fuel import Fuel
 from fetch.weather import Weather
 from scrape.scrape_fuel import ScrapeFuel
 from scrape.scrape_weather import ScrapeWeather
+from scripts import clean_up
 
 
 dag = DAG(
@@ -66,13 +67,11 @@ run_scrape_ugandan_weather = PythonOperator(
     op_kwargs={'country': 'KE'},
 )
 
-def clean_up_files():
-    pass
 
 run_clean_up = PythonOperator(
     dag=dag,
     task_id = 'run_clean_up',
-    python_callable=clean_up_files
+    python_callable=clean_up.clean_up
 )
 
 run_fetch_kenyan_fuel >> run_scrape_kenyan_fuel >> run_clean_up
