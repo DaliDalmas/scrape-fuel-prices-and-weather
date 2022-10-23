@@ -1,5 +1,7 @@
 # scrape weather and fuel prices
-In this project I used apache airflow to scrape website periodically. This is for the tutorials I do on youtube. You can checkout my channel [here](https://www.youtube.com/channel/UCzSlSeJ4XH4bWH79DKmIxjg). I do data science and data engineering videos for projects like these.
+In this project I used apache airflow to scrape website periodically, use beautiful soup to clean the data, use postgresql database to store the data and store the metadata for airflow, use plotly dash to create an analytics dashbaord.
+
+This is for the tutorials I do on youtube. You can checkout my channel [here](https://www.youtube.com/channel/UCzSlSeJ4XH4bWH79DKmIxjg). I do data science and data engineering videos for projects like these.
 ## Technologies used
 <img src="images/beautifulsoup.png" alt="Apache Airflow" width="200" height="100"/>&nbsp;&nbsp;<img src="images/AirflowLogo.png" alt="BeautifulSoup" width="200" height="100" />&nbsp;&nbsp;<img src="images/fastapi.png" alt="fast api" width="200" height="100" />
 
